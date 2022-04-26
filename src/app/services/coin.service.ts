@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Coin } from './../models/Coin';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +12,7 @@ export class CoinService {
 
   constructor(private http: HttpClient) { }
 
-  getCoins() {
-    return this.http.get<Coin[]>(this.url).subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (err) => {
-      console.log(err);
-      }
-    );
+  getCoins():Observable<Coin[]> {
+    return this.http.get<Coin[]>(this.url);
   }
 }
