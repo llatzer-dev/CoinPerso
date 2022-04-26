@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './material.module';
+import { HeaderComponent } from './components/header/header/header.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MaterialModule } from './material.module';
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    BoardUserComponent
+    BoardUserComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { MaterialModule } from './material.module';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
