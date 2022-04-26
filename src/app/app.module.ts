@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './material.module';
 import { HeaderComponent } from './components/header/header/header.component';
+import { TableCryptocurrenciesComponent } from './components/table-cryptocurrencies/table-cryptocurrencies/table-cryptocurrencies.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HeaderComponent } from './components/header/header/header.component';
     BoardModeratorComponent,
     BoardUserComponent,
     HeaderComponent,
+    TableCryptocurrenciesComponent,
   ],
   imports: [
     BrowserModule,
