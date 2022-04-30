@@ -21,6 +21,8 @@ import { MaterialModule } from './material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { TableCryptocurrenciesComponent } from './components/table-cryptocurrencies/table-cryptocurrencies/table-cryptocurrencies.component';
 
+import { CommonModule } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +43,7 @@ import { TableCryptocurrenciesComponent } from './components/table-cryptocurrenc
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
+    CommonModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

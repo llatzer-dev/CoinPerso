@@ -1,6 +1,10 @@
 import { CoinService } from './../../../services/coin.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Coin } from 'src/app/models/Coin';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+
+import { webSocket } from 'rxjs/webSocket';
 
 @Component({
   selector: 'app-table-cryptocurrencies',
@@ -9,33 +13,62 @@ import { Coin } from 'src/app/models/Coin';
 })
 export class TableCryptocurrenciesComponent implements OnInit {
 
-  coins: Coin[] = [];
-  filteredCoins: Coin[] = [];
-  titles: string[] = ['#', 'Coin', 'Price', 'Price Change', '24h Volume'];
   searchText: string = '';
+  realTimePrices: any = {};
+  coins: Coin[] = [];
+  tableColumns: string[] = ['image', 'rank', 'name', 'price', 'capacity', 'variation'];
+
+  datasource = new MatTableDataSource<Coin>([]);
+
+  @ViewChild(MatPaginator)
+  paginator: MatPaginator | null = null;
 
   constructor(
-    private coinService: CoinService
-  ) { }
+    private coincapService: CoinService
+  ) {}
 
-  ngOnInit(): void {
-    this.coinService.getCoins().subscribe(
-      res => {
-        this.coins = res;
-        this.filteredCoins = res;
-        console.log(res);
+  ngOnInit() {
+    this.coincapService.getCoins().subscribe((coinData) => {
+        this.coins = coinData;
+        this.datasource.data = coinData;
+        console.log(coinData)
       },
-      err => {
-        console.error(err);
-      }
-    )
+      (err) => console.error(err),
+      () => this.getRealTimePrices()
+    );
+  }
+
+  ngAfterViewInit() {
+    this.datasource.paginator = this.paginator;
+  }
+
+  getRealTimePrices() {
+    webSocket(`wss://ws.coincap.io/prices?assets=${this.getCoinsNames()}`)
+      .subscribe((prices: any) => {
+        this.realTimePrices = {...this.realTimePrices, ...prices};
+
+        setTimeout(() => {
+          this.datasource.data.map(coin => {
+            coin.current_price = prices[coin.id] ? prices[coin.id] : coin.current_price;
+          });
+        }, 400);
+
+      }, (error) => console.error(error));
+  }
+
+  getCoinsNames() {
+    return this.datasource.data.map(coin => coin.id).join();
+  }
+
+  testChanges(event?: any) {
+    console.log('hey', event.target.textContent);
   }
 
   searchCoin() {
-    this.filteredCoins = this.coins.filter((coin) =>
-      coin.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
-      coin.symbol.toLowerCase().includes(this.searchText.toLowerCase())
-    );
+      this.datasource.data = this.coins.filter((coin) =>
+        coin.name.toLowerCase().includes(this.searchText.toLowerCase())
+        || coin.symbol.toLowerCase().includes(this.searchText.toLowerCase())
+      );
   }
 
 }
