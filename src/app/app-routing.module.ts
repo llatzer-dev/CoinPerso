@@ -1,3 +1,4 @@
+import { PortfolioComponent } from './components/portfolio/portfolio/portfolio.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'cryptocurrencies', component: TableCryptocurrenciesComponent},
+  { path: 'portfolio', component: PortfolioComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

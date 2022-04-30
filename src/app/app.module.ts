@@ -22,6 +22,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { TableCryptocurrenciesComponent } from './components/table-cryptocurrencies/table-cryptocurrencies/table-cryptocurrencies.component';
 
 import { CommonModule } from '@angular/common';
+import { PortfolioComponent } from './components/portfolio/portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CommonModule } from '@angular/common';
     BoardUserComponent,
     HeaderComponent,
     TableCryptocurrenciesComponent,
+    PortfolioComponent,
   ],
   imports: [
     BrowserModule,

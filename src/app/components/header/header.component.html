@@ -18,6 +18,9 @@
     <li>
       <a href="/cryptocurrencies" class="nav-link" routerLink="cryptocurrencies">Cryptocurrencies</a>
     </li>
+    <li>
+      <a href="/portfolio" class="nav-link" *ngIf="isLoggedIn" routerLink="portfolio">Portfolio</a>
+    </li>
   </ul>
 
   <!-- Right Options -->
