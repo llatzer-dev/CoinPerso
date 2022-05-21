@@ -1,3 +1,4 @@
+import { DialogComponent } from './components/portfolio/dialog/dialog.component';
 import { PortfolioComponent } from './components/portfolio/portfolio/portfolio.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'admin', component: BoardAdminComponent },
   { path: 'cryptocurrencies', component: TableCryptocurrenciesComponent},
   { path: 'portfolio', component: PortfolioComponent},
+  { path: 'portfolio', component: DialogComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
