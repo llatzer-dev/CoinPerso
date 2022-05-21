@@ -13,7 +13,7 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardUserComponent } from './board-user/board-user.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -23,6 +23,8 @@ import { TableCryptocurrenciesComponent } from './components/table-cryptocurrenc
 
 import { CommonModule } from '@angular/common';
 import { PortfolioComponent } from './components/portfolio/portfolio/portfolio.component';
+import { DialogComponent } from './components/portfolio/dialog/dialog.component';
+import { AddMovementComponent } from './components/portfolio/add-movement/add-movement.component';
 
 @NgModule({
   declarations: [
@@ -37,11 +39,15 @@ import { PortfolioComponent } from './components/portfolio/portfolio/portfolio.c
     HeaderComponent,
     TableCryptocurrenciesComponent,
     PortfolioComponent,
+    DialogComponent,
+    AddMovementComponent,
   ],
+  entryComponents: [DialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
