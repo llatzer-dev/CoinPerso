@@ -1,6 +1,6 @@
 import { Asset } from "./Asset";
 
 export interface Portfolio {
-  name_portfolio?: string;
+  name?: string;
   assets?: Asset[];
 }
