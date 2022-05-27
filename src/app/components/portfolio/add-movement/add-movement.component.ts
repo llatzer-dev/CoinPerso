@@ -1,9 +1,11 @@
+import { PortfolioService } from './../../../services/portfolio.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Asset } from 'src/app/models/Asset';
 import { Coin } from 'src/app/models/Coin';
 import { Movement } from 'src/app/models/Movement';
 import { Portfolio } from 'src/app/models/Portfolio';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
   selector: 'app-add-movement',
@@ -25,6 +27,8 @@ export class AddMovementComponent implements OnInit {
 
   constructor(
     private _fb: FormBuilder,
+    private portfolioService: PortfolioService,
+    private tokenService: TokenStorageService,
   ) { }
 
   get nameAsset() { return this.form.get('nameAsset') };
@@ -63,10 +67,10 @@ export class AddMovementComponent implements OnInit {
       console.log(map)
 
       const mov: Movement = {
-        type_movement: map.get('typeMovement'),
-        date_movement: map.get('dateMovement'),
-        price_movement: map.get('priceMovement'),
-        quantity_movement: map.get('quantityMovement'),
+        type: map.get('typeMovement'),
+        date: map.get('dateMovement'),
+        price: map.get('priceMovement'),
+        quantity: map.get('quantityMovement'),
       }
 
       const nameAsset = map.get('nameAsset');
@@ -74,22 +78,21 @@ export class AddMovementComponent implements OnInit {
       if(this.portfolio.assets){
 
         const existeAsset = this.portfolio.assets!.find(value => {
-          if(value.name_asset === nameAsset){
+          if(value.name === nameAsset){
             return true
           }
 
           return false;
         })
 
-        const indexAsset = this.portfolio.assets!.findIndex(value => value.name_asset == nameAsset);
+        const indexAsset = this.portfolio.assets!.findIndex(value => value.name == nameAsset);
 
         if(existeAsset == undefined) {
           if(indexAsset < 0){
             // se crea un asset y se añade el primer movimiento que tendrá el asset
             const asset: Asset = {
-              name_asset: nameAsset,
-              symbol_asset: this.getSymbol(nameAsset),
-              image: "",
+              name: nameAsset,
+              symbol: this.getSymbol(nameAsset),
               movements: [mov],
             }
 
@@ -101,11 +104,23 @@ export class AddMovementComponent implements OnInit {
             // se añade el movimiento al asset que ya existe
             this.portfolio.assets[indexAsset].movements?.push(mov);
           }
-
         }
       }
-
     }
+
+    // console.log('PORTFOLIO')
+    // console.log(this.portfolio)
+
+    const portfolioRequest = {
+      userId: this.tokenService.getUser().id,
+      portfolio: this.portfolio,
+    }
+
+    this.portfolioService.post(portfolioRequest).subscribe( (value: any) => {
+      console.log(value)
+    }, (err: any) => {
+      console.log(err)
+    });
   }
 
   getSymbol(nameCurrencie: string){
