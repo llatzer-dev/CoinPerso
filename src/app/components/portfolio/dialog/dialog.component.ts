@@ -31,7 +31,7 @@ export class DialogComponent implements OnInit {
 
     this.coinService.getCoins().subscribe((coinData) => {
       this.coins = coinData;
-      // console.log(coinData)
+      console.log(coinData)
       }, (err) => {
         console.error(err)
     });

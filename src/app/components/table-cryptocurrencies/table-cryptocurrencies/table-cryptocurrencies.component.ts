@@ -31,7 +31,6 @@ export class TableCryptocurrenciesComponent implements OnInit {
     this.coincapService.getCoins().subscribe((coinData) => {
         this.coins = coinData;
         this.datasource.data = coinData;
-        console.log(coinData)
       },
       (err) => console.error(err),
       () => this.getRealTimePrices()
@@ -58,10 +57,6 @@ export class TableCryptocurrenciesComponent implements OnInit {
 
   getCoinsNames() {
     return this.datasource.data.map(coin => coin.id).join();
-  }
-
-  testChanges(event?: any) {
-    console.log('hey', event.target.textContent);
   }
 
   searchCoin() {

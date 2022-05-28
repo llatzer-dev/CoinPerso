@@ -64,8 +64,6 @@ export class AddMovementComponent implements OnInit {
 
       const map = objectToMap(resultadoForm);
 
-      console.log(map)
-
       const mov: Movement = {
         type: map.get('typeMovement'),
         date: map.get('dateMovement'),
@@ -89,7 +87,7 @@ export class AddMovementComponent implements OnInit {
 
         if(existeAsset == undefined) {
           if(indexAsset < 0){
-            // se crea un asset y se añade el primer movimiento que tendrá el asset
+            // an asset is created and the first movement that the asset will have is added
             const asset: Asset = {
               name: nameAsset,
               symbol: this.getSymbol(nameAsset),
@@ -101,15 +99,13 @@ export class AddMovementComponent implements OnInit {
         }
         else if(existeAsset != undefined)  {
           if(indexAsset >= 0) {
-            // se añade el movimiento al asset que ya existe
+            // the movement is added to the asset that already exists
             this.portfolio.assets[indexAsset].movements?.push(mov);
           }
         }
       }
     }
 
-    // console.log('PORTFOLIO')
-    // console.log(this.portfolio)
 
     const portfolioRequest = {
       userId: this.tokenService.getUser().id,

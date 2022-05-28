@@ -127,8 +127,7 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(
       result => {
-        // console.log('Dialog Result', result)
-        // console.log(result)
+        console.log('Dialog Result', result)
 
         if(result !== undefined && result !== ''){
           // console.log('le has dado a confirmar');
@@ -296,18 +295,14 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   }
 
   delete(assetDeleted: any): void{
-    // console.log('DELETE');
     this.data.assets = this.data.assets?.filter(asset => asset.name !== assetDeleted.name);
 
     this.portFolioService.update(this.tokenService.getUser().id, this.data).subscribe( (value: any) => {
-      // console.log('UPDATE PORTFOLIO DA ESTO')
-      // console.log(value)
+      console.log(value)
 
     }, (err: any) => {
       console.log(err)
     });
-
-    // console.log(this.data)
 
     this.dataSource.data = this.getDataTable();
   }
