@@ -25,6 +25,7 @@ import { CommonModule } from '@angular/common';
 import { PortfolioComponent } from './components/portfolio/portfolio/portfolio.component';
 import { DialogComponent } from './components/portfolio/dialog/dialog.component';
 import { AddMovementComponent } from './components/portfolio/add-movement/add-movement.component';
+import { VigilantGuard } from './guards/vigilant.guard';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import { AddMovementComponent } from './components/portfolio/add-movement/add-mo
     MaterialModule,
     CommonModule,
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, VigilantGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
