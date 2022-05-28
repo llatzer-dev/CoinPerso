@@ -1,5 +1,31 @@
 <div class="container">
   <header class="jumbotron">
-    <p>{{ content }}</p>
+
+    <div class="text-center w-100">
+      <img src="assets/images/cpLogo.png" class="rounded img-thumbnail" alt="CoinPersoLogo">
+    </div>
+
+    <mat-divider class="my-3"></mat-divider>
+
+    <div class="card">
+      <p class="card-header text-center h1-title py-3"> <strong>CoinPerso</strong> is a Free & Powerful Crypto Portfolio Tracker</p>
+      <div class="card-body">
+        <p class="card-text">Track your crypto earnings like a pro, with a user-friendly and reliable portfolio tracker that you can rely on.</p>
+
+        <div *ngIf="isLoggedIn; else elseBlock">
+          <div class="text-center">
+            <a href="/portfolio" class="btn btn-primary  mt-4" >Start your portfolio now!</a>
+          </div>
+        </div>
+        <ng-template #elseBlock>
+          <div class="text-center">
+            <a href="/login" class="btn btn-primary  mt-4" >Login to Get Start!</a>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+
+    <!-- <p>{{ content }}</p> -->
   </header>
 </div>

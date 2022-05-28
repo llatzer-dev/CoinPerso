@@ -63,3 +63,7 @@ mat-cell, mat-header-cell {
     overflow: hidden
   }
 }
+
+* {
+  font-size: 20px;
+}

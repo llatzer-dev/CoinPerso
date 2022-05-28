@@ -33,18 +33,18 @@
 
   <br>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" >
     <mat-label>Choose a date</mat-label>
     <input formControlName="dateMovement" matInput [matDatepicker]="picker">
-    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-hint class="mt-1 mb-1">MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
   <br>
 
-  <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="save()">Add</button>
-  <mat-error *ngIf="!form.valid">
+  <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="save()" class="p-2 mt-3">Add</button>
+  <mat-error *ngIf="!form.valid" class="m-3">
     Invalid, data required.
   </mat-error>
 

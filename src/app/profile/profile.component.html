@@ -1,8 +1,8 @@
 <div class="container" *ngIf="currentUser; else loggedOut">
   <header class="jumbotron">
-    <h3>
-      <strong>{{ currentUser.username }}</strong> Profile
-    </h3>
+    <p class="h1-title">
+      {{ currentUser.username }} Profile
+    </p>
   </header>
 
   <p>
@@ -22,6 +22,12 @@
       {{ role }}
     </li>
   </ul>
+
+  <div class="text-center">
+    <div class="card-body">
+      <a href="/portfolio" class="btn btn-primary" >Go to {{currentUser.username}} Portfolio</a>
+    </div>
+  </div>
 
 </div>
 

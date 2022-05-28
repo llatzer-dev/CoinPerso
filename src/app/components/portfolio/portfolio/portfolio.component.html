@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h1 class="my-4">{{data?.name}}</h1>
+  <p class="my-4 h1-title">{{data?.name}}</p>
   <mat-divider></mat-divider>
 
   <div *ngIf="this.data?.assets?.length === 0 ">
@@ -101,18 +101,11 @@
           Delete
         </th>
         <td mat-cell *matCellDef="let element">
-          <!-- <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
-            <mat-icon>delete_outline</mat-icon>
-          </button> -->
           <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" (click)="this.delete(element)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
       </ng-container>
-
-      <!-- <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
-        <mat-icon>delete</mat-icon>
-      </button> -->
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -121,27 +114,5 @@
     <br>
 
   </div>
-
-
-
-  <!-- <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-    <div class="card-header">Header</div>
-    <div class="card-body">
-      <h5 class="card-title">Dark card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-
-  <div class="col-sm-6">
-    <div class="card text-white bg-dark text-center">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- expansion panel -->
 
 </div>
