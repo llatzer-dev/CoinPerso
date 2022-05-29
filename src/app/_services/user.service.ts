@@ -8,7 +8,7 @@ const API_URL = 'http://localhost:27017/api/test/';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class TestService {
 
   constructor(
     private http: HttpClient

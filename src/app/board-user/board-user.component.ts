@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserService } from '../_services/user.service';
+import { TestService } from '../_services/user.service';
 
 @Component({
   selector: 'app-board-user',
@@ -12,7 +12,7 @@ export class BoardUserComponent implements OnInit {
   content?: string;
 
   constructor(
-    private userService: UserService
+    private userService: TestService
   ) { }
 
   ngOnInit(): void {

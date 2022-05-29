@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const AUTH_API = 'http://localhost:27017/api/portfolio';
+const API_URL = 'http://localhost:27017/api/portfolio';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -17,23 +17,23 @@ export class PortfolioService {
   constructor(private http: HttpClient) { }
 
   hasPortfolio(id: any): Observable<Boolean> {
-    return this.http.get<Boolean>(`${AUTH_API}/userId/${id}`, httpOptions);
+    return this.http.get<Boolean>(`${API_URL}/userId/${id}`, httpOptions);
   }
 
   post(portfolio: any): Observable<any>{
-    return this.http.post(`${AUTH_API}`, portfolio, httpOptions);
+    return this.http.post(`${API_URL}`, portfolio, httpOptions);
   }
 
   get(id: any): Observable<any> {
-    return this.http.get<any>(`${AUTH_API}/${id}`, httpOptions);
+    return this.http.get<any>(`${API_URL}/${id}`, httpOptions);
   }
 
-  delete(id: any, asset: any): Observable<any> {
-    return this.http.delete(`${AUTH_API}/${id}`, asset);
-  }
+  // delete(id: any, asset: any): Observable<any> {
+  //   return this.http.delete(`${AUTH_API}/${id}`, asset);
+  // }
 
   update(id: any, portfolio: any): Observable<any> {
-    return this.http.put(`${AUTH_API}/${id}`, portfolio);
+    return this.http.put(`${API_URL}/${id}`, portfolio);
   }
 
   // create(data: any): Observable<any> {
