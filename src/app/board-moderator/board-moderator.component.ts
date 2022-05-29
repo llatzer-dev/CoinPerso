@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user';
+import { UserService } from '../services/user.service';
 
-import { UserService } from './../_services/user.service';
+import { TestService } from './../_services/user.service';
 @Component({
   selector: 'app-board-moderator',
   templateUrl: './board-moderator.component.html',
@@ -8,14 +10,20 @@ import { UserService } from './../_services/user.service';
 })
 export class BoardModeratorComponent implements OnInit {
 
-  content?: string;
+  content: string | undefined;
+  users: User[] | undefined;
+
+  showDataAsJson: Boolean = false;
+  showDataAsTable: Boolean = false;
 
   constructor(
-    private userService: UserService
+    private testService: TestService,
+    private userService: UserService,
   ) { }
 
   ngOnInit(): void {
-    this.userService.getModeratorBoard().subscribe(
+
+    this.testService.getModeratorBoard().subscribe(
       data => {
         this.content = data;
       },
@@ -23,6 +31,23 @@ export class BoardModeratorComponent implements OnInit {
         this.content = JSON.parse(err.error).message;
       }
     );
+
+    this.getUsersSubscribeMethod();
+  }
+
+  public getUsersSubscribeMethod() {
+    this.userService.getAllUsers().subscribe(
+      data => {
+        this.users = JSON.parse(data);
+
+        console.log('GET USERS TABLA')
+        console.log(this.users)
+      },
+      err => {
+        console.log(err)
+      }
+    );
+
   }
 
 }

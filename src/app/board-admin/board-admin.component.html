@@ -1,5 +1,52 @@
 <div class="container">
   <header class="jumbotron">
-    <p>{{ content }}</p>
+    <div class="h1-title">{{ content }}</div>
+
+    <div class="container text-center my-4">
+      <button type="button" class="btn btn-primary btn-lg mx-2" (click)="showTable()">Show users in a table</button>
+      <button type="button" class="btn btn-secondary btn-lg mx-2" (click)="showJSON()">Show users as JSON</button>
+    </div>
+
+    <div *ngIf="showDataAsJson">
+      <div class="container">
+        <pre>
+          <p class="card-text json-data">
+            {{this.users | json}}
+          </p>
+        </pre>
+      </div>
+    </div>
+
+    <div *ngIf="showDataAsTable">
+      <div class="container tabla">
+
+        <table class="table table-dark tabla">
+          <thead>
+            <tr>
+              <th scope="col" class="tabla">ID</th>
+              <th scope="col" class="tabla">Username</th>
+              <th scope="col" class="tabla">Email</th>
+              <th scope="col" class="tabla">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let user of users">
+              <th scope="row" class="tabla">{{user.id}}</th>
+              <td scope="row" class="tabla">{{user.username}}</td>
+              <td scope="row" class="tabla">{{user.email}}</td>
+              <td scope="row" class="tabla">
+                <button mat-icon-button color="primary" (click)="this.delete(user.id)">
+                  <mat-icon class="icon">delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
   </header>
 </div>

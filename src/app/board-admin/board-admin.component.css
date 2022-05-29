@@ -1,0 +1,19 @@
+* {
+  font-size: 25px ;
+}
+
+.json-data{
+  font-size: 15px;
+}
+
+* {
+  overflow-y: hidden;
+}
+
+.icon {
+  overflow-x: hidden;
+}
+
+.tabla{
+  font-size: 20px;
+}
