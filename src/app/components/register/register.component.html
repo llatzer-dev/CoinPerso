@@ -80,7 +80,7 @@
               #password="ngModel"
             />
 
-            <div class="alert-danger" *ngIf="password.errors && f.submitted">
+            <div class="alert-danger my-2 p-2 rounded" *ngIf="password.errors && f.submitted">
               <div *ngIf="password.errors['required']">Password is required</div>
 
               <div *ngIf="password.errors['minlength']">
