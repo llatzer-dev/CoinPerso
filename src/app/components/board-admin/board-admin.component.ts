@@ -1,7 +1,8 @@
-import { User } from './../models/user';
-import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { TestService } from '../_services/user.service';
+
+import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
+import { TestService } from 'src/app/services/test.service';
 
 @Component({
   selector: 'app-board-admin',

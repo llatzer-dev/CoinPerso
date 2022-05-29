@@ -1,8 +1,5 @@
 import { Portfolio } from 'src/app/models/Portfolio';
-import { Movement } from './../../../models/Movement';
-import { Asset } from './../../../models/Asset';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Coin } from 'src/app/models/Coin';

@@ -9,9 +9,8 @@ import { Portfolio } from 'src/app/models/Portfolio';
 import { MatTableDataSource } from '@angular/material/table';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
-import { take } from 'rxjs';
 import { Coin } from 'src/app/models/Coin';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -19,63 +18,6 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit, AfterViewInit {
-
-  // data: Portfolio = {
-  //   name: "Portfolio numero1",
-  //   assets: [
-  //     {
-  //       name_asset: "Bitcoin",
-  //       symbol_asset: "BTC",
-  //       movements: [
-  //         {
-  //           type_movement: "Buy",
-  //           date_movement: new Date(),
-  //           price_movement: 57653.85,
-  //           quantity_movement: 0.003275
-  //         },
-  //         {
-  //           type_movement: "Buy",
-  //           date_movement: new Date(),
-  //           price_movement: 55872.90,
-  //           quantity_movement: 0.003256
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       name_asset: "Ethereum",
-  //       symbol_asset: "ETH",
-  //       movements: [
-  //         {
-  //           type_movement: "Buy",
-  //           date_movement: new Date(),
-  //           price_movement: 1000,
-  //           quantity_movement: 1
-  //         },
-  //         {
-  //           type_movement: "Buy",
-  //           date_movement: new Date(),
-  //           price_movement: 1050,
-  //           quantity_movement: 1
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       name_asset: "BNB",
-  //       symbol_asset: "bnb",
-  //       movements: [
-  //         {
-  //           type_movement: "buy",
-  //           date_movement: new Date(),
-  //           price_movement: 200,
-  //           quantity_movement: 1
-  //         }
-  //       ]
-  //     }
-
-  //   ]
-  // };
-
-
 
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -88,7 +30,6 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource();
 
   data!: Portfolio ;
-
   hasPortfolio: Boolean | undefined;
 
   data_empty: Portfolio = {

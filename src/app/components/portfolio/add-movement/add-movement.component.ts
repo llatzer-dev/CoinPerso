@@ -5,7 +5,7 @@ import { Asset } from 'src/app/models/Asset';
 import { Coin } from 'src/app/models/Coin';
 import { Movement } from 'src/app/models/Movement';
 import { Portfolio } from 'src/app/models/Portfolio';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-add-movement',
