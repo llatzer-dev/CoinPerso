@@ -1,0 +1,34 @@
+<div class="container">
+  <h2 mat-dialog-title> Add Coin </h2>
+
+  <div mat-dialog-content>
+    <div class="container">
+      <div class="row justify-content-md-center text-center">
+
+        <mat-tab-group animationDuration="0ms" >
+
+          <mat-tab label="Buy" class="mt-5">
+            <app-add-movement [portfolio]="portfolio" [typeMovement]="'buy'" [coins]="coins"></app-add-movement>
+          </mat-tab>
+
+          <mat-tab label="Sell">
+            <app-add-movement [portfolio]="portfolio" [typeMovement]="'sell'" [coins]="coins"></app-add-movement>
+          </mat-tab>
+
+          <mat-tab label="Transfer">
+            <app-add-movement [portfolio]="portfolio" [typeMovement]="'transfer'" [coins]="coins"></app-add-movement>
+          </mat-tab>
+
+        </mat-tab-group>
+
+      </div>
+    </div>
+  </div>
+
+  <div mat-dialog-actions align="center">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button [mat-dialog-close]="portfolio">Confirm</button>
+  </div>
+</div>
+
+

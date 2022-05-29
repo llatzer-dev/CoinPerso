@@ -1,0 +1,13 @@
+img {
+  height: 20%;
+  width: 20%;
+  object-fit: contain;
+ }
+
+.h1-title{
+  font-size: 30px;
+}
+
+strong{
+  font-size: 30px;
+}

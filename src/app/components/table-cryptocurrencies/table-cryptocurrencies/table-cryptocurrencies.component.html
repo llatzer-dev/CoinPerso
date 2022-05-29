@@ -1,0 +1,74 @@
+<div class="container">
+
+  <input
+    type="text"
+    class="form-control bg-dark text-light border-0 my-4 text-center"
+    (keyup)="searchCoin()"
+    [(ngModel)]="searchText"
+    placeholder="Search"
+  />
+
+  <hr>
+
+  <div class="mat-elevation-z9">
+    <mat-table [dataSource]="datasource">
+
+      <ng-container matColumnDef="image">
+        <mat-header-cell class="img-cell" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="img-cell" *matCellDef="let element">
+          <img
+            src="https://static.coincap.io/assets/icons/{{element.symbol | lowercase}}@2x.png"
+            alt="{{element.symbol}}"
+            width="40px"
+            height="40px"
+          >
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="rank">
+        <mat-header-cell *matHeaderCellDef>Ranking</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.market_cap_rank}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.name }}
+          <span class="symbol">{{ element.symbol.toUpperCase() }}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+        <mat-cell *matCellDef="let element"
+        [ngClass]="{negChange: realTimePrices[element.id] < element.current_price, posChange: realTimePrices[element.id] > element.current_price}"
+        >
+          {{ element.current_price | currency }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="capacity">
+        <mat-header-cell *matHeaderCellDef class="marketCap">Market Cap</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="marketCap">
+          {{ element.market_cap | number }}
+        </mat-cell>>
+      </ng-container>
+
+      <ng-container matColumnDef="variation">
+        <mat-header-cell *matHeaderCellDef>Variación 24h</mat-header-cell>
+        <mat-cell *matCellDef="let element"
+        [ngClass]="{positive: element.price_change_percentage_24h > 0, negative: element.price_change_percentage_24h <= 0}">
+          {{ element.price_change_percentage_24h/100 | percent:'.0-2' }}
+        </mat-cell>>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[10, 5, 20, 25]"></mat-paginator>
+  </div>
+
+  <hr>
+
+</div>

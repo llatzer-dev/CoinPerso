@@ -1,0 +1,25 @@
+<div class="container">
+  <header class="jumbotron">
+    <div class="h1-title">{{ content }}</div>
+
+    <div class="tabla mt-4">
+      <table class="table table-dark tabla">
+        <thead>
+          <tr>
+            <th scope="col" class="tabla">ID</th>
+            <th scope="col" class="tabla">Username</th>
+            <th scope="col" class="tabla">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <th scope="row" class="tabla">{{user.id}}</th>
+            <td scope="row" class="tabla">{{user.username}}</td>
+            <td scope="row" class="tabla">{{user.email}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </header>
+</div>

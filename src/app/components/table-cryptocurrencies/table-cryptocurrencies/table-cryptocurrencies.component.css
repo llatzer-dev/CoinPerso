@@ -1,0 +1,69 @@
+mat-table {
+  width: 100%;
+}
+
+mat-cell, mat-header-cell {
+  height: 60px;
+  justify-content: center;
+}
+
+.symbol {
+  margin-left: 5px;
+  font-size: xx-small;
+  font-weight: 300;
+  color: lightgray;
+}
+
+.img-cell {
+  width: 50px;
+}
+
+.positive {
+  color: lightgreen;
+}
+
+.negative {
+  color: lightcoral;
+}
+
+.posChange {
+  animation: positiveChange 250ms both;
+}
+
+.negChange {
+  animation: negativeChange 250ms both;
+}
+
+@keyframes positiveChange {
+  from {color: cornsilk;}
+  to {color: chartreuse;}
+}
+
+@keyframes negativeChange {
+  from {color: cornsilk;}
+  to {color: red;}
+}
+
+@media (max-width: 730px) {
+  .marketCap {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .img-cell {
+    display: none;
+  }
+
+  mat-cell {
+    font-size: smaller;
+  }
+
+  mat-table {
+    overflow: hidden
+  }
+}
+
+* {
+  font-size: 20px;
+}
