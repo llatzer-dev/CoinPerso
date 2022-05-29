@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
-const API_URL = 'http://localhost:27017/api/test/';
+// const API_URL = 'http://localhost:27017/api/test/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestService {
+
+  private endPoint = environment.apiURL + '/test/';
 
   constructor(
     private http: HttpClient
@@ -16,28 +19,28 @@ export class TestService {
 
   getPublicContent(): Observable<any> {
     return this.http.get(
-      API_URL + 'all',
+      this.endPoint + 'all',
       {responseType: 'text'}
     );
   }
 
   getUserBoard(): Observable<any> {
     return this.http.get(
-      API_URL + 'user',
+      this.endPoint + 'user',
       { responseType: 'text' }
     );
   }
 
   getModeratorBoard(): Observable<any> {
     return this.http.get(
-      API_URL + 'mod',
+      this.endPoint + 'mod',
       { responseType: 'text' }
     );
   }
 
   getAdminBoard(): Observable<any> {
     return this.http.get(
-      API_URL + 'admin', { responseType: 'text' }
+      this.endPoint + 'admin', { responseType: 'text' }
     );
   }
 
