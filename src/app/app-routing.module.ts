@@ -1,3 +1,4 @@
+import { AdministratorGuard } from './guards/administrator.guard';
 import { DialogComponent } from './components/portfolio/dialog/dialog.component';
 import { PortfolioComponent } from './components/portfolio/portfolio/portfolio.component';
 import { NgModule } from '@angular/core';
@@ -19,8 +20,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [VigilantGuard]},
   { path: 'user', component: BoardUserComponent },
-  { path: 'mod', component: BoardModeratorComponent },
-  { path: 'admin', component: BoardAdminComponent },
+  { path: 'mod', component: BoardModeratorComponent, canActivate: [AdministratorGuard]},
+  { path: 'admin', component: BoardAdminComponent, canActivate: [AdministratorGuard] },
   { path: 'cryptocurrencies', component: TableCryptocurrenciesComponent},
   { path: 'portfolio', component: PortfolioComponent, canActivate: [VigilantGuard]},
   { path: 'portfolio', component: DialogComponent},
